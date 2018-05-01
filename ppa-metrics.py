@@ -25,7 +25,7 @@ if __name__ == "__main__":
     cli.set_defaults(graphs=False)
     args = cli.parse_args()
 
-    CACHE = os.path.join(os.environ['HOME'], 'launchpadlib', 'cache')
+    CACHE = os.path.join(os.environ.get('HOME'), '.launchpadlib', 'cache')
     API_URL = 'https://api.launchpad.net/devel/ubuntu/' + args.release + '/' + args.architecture
     lp = Launchpad.login_anonymously('ppastat', 'production', CACHE)
     ppa = lp.people[args.owner].getPPAByName(name=args.ppa)
